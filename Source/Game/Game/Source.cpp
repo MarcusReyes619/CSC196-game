@@ -75,10 +75,9 @@ int main(int argc, char* argv[]) {
 	renderer.Initialize();
 	renderer.CreateWindow("CSC196", 800, 600);
 	kiko::InputSystem inputSystem;
-	inputSystem.Initialize();*/
-	
-	kiko::InputSystem inputSystem;
 	inputSystem.Initialize();
+	
+
 	bool quit = false;
 	while (!quit)
 	{
@@ -102,7 +101,7 @@ int main(int argc, char* argv[]) {
 		
 
 		ren.EndFrame();
-	}
+	}*/
 
 	
 	
