@@ -2,6 +2,7 @@
 
 #include "../Engine/Core/Core.h"
 #include "../Engine/Input/InputSystem.h"
+#include "Render/Modle.h"
 
 using namespace std;
 
@@ -29,6 +30,28 @@ public:
 
 
 int main(int argc, char* argv[]) {
+	ren::Renderer ren;
+
+
+	kiko::seedRandom((unsigned int)time(nullptr));
+
+	ren.Initialize();
+	ren.CreateWindow("YES SIR", 800, 600);
+
+	//std::vector <kiko::vec2> points{ {-10,5},{10,5},{0,-5},{-10,5} };
+	//kiko::Modle modle {points};
+
+	/*while (true) {
+		ren.SetColor(0, 0, 0, 0);
+		ren.BeginFrane();
+		ren.SetColor(kiko::random(256), kiko::random(256), kiko::random(256), kiko::random(256));
+		modle.Draw(ren, kiko::Vector2{ 200,200 }, 3.0f);
+	}*/
+
+
+	
+
+	
 
 	
 	/*ren::Renderer ree;
@@ -46,13 +69,16 @@ int main(int argc, char* argv[]) {
 	//kiko::vec2 position(400, 300);
 
 
-	ren::Renderer renderer;
+	//iputs
+
+	/*ren::Renderer renderer;
 	renderer.Initialize();
 	renderer.CreateWindow("CSC196", 800, 600);
 	kiko::InputSystem inputSystem;
-	inputSystem.Initialize();
+	inputSystem.Initialize();*/
 	
-
+	kiko::InputSystem inputSystem;
+	inputSystem.Initialize();
 	bool quit = false;
 	while (!quit)
 	{
@@ -75,7 +101,7 @@ int main(int argc, char* argv[]) {
 		}
 		
 
-		renderer.EndFrame();
+		ren.EndFrame();
 	}
 
 	
