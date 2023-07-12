@@ -10,5 +10,19 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Actors.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actors.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Enemy.h" />
   </ItemGroup>
 </Project>

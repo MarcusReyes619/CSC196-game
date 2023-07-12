@@ -156,9 +156,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actors.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Engine\Audio\Audio.vcxproj">
+      <Project>{5e99b4e9-e041-4422-8e42-3c5bc9f71a1a}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Engine\Core\Core.vcxproj">
       <Project>{fa8bb60e-033b-4536-bb25-c53619b5394a}</Project>
     </ProjectReference>
@@ -168,6 +174,11 @@
     <ProjectReference Include="..\..\Engine\Render\Render.vcxproj">
       <Project>{61ec503b-6422-4233-b66e-9b3e86edca0b}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actors.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

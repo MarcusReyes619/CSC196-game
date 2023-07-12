@@ -1,6 +1,5 @@
 #pragma once
 #include "Core/Core.h"
-//#include "Core/Vector2.h"
 #include "Render/Render.h"
 #include <vector>
 
@@ -14,9 +13,10 @@ namespace kiko {
 		Modle() = default;
 		Modle(std::vector<Vector2>& points) : m_points{ points } {};
 		//Model(std::vector<vec2> points) { m_points = points; };
-		//bool Load(const std::string& filename);
+		bool Load(const std::string& filename);
 
-		void Draw(ren::Renderer& renderer, const vec2& position, float scale);
+		void Draw(ren::Renderer& renderer, const vec2& position,float rotation, float scale);
+		void Draw(ren::Renderer& renderer, const kiko::Transform& trans);
 
 	private:
 

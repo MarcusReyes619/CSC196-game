@@ -3,6 +3,11 @@
 #include "../Engine/Core/Core.h"
 #include "../Engine/Input/InputSystem.h"
 #include "Render/Modle.h"
+#include <thread>
+#include "Player.h"
+#include "Enemy.h"
+#include "Audio/AudioSystem.h"
+
 
 using namespace std;
 
@@ -30,24 +35,117 @@ public:
 
 
 int main(int argc, char* argv[]) {
-	ren::Renderer ren;
 
+	kiko::AudioSystem a;
+
+	a.Initialize();
+			
 
 	kiko::seedRandom((unsigned int)time(nullptr));
+	 a.AddAudio("hit", "C:\\Users\\mreyes\\source\\repos\\CSC196-game\\Build\\assest\\Laser_Shoot6.wav");
 
-	ren.Initialize();
-	ren.CreateWindow("YES SIR", 800, 600);
+	ren::g_ren.Initialize();
+	ren::g_ren.CreateWindow("YES SIR", 800, 600);
 
-	//std::vector <kiko::vec2> points{ {-10,5},{10,5},{0,-5},{-10,5} };
-	//kiko::Modle modle {points};
+	kiko::g_inputSystem.Initialize();
+	
+
+	std::vector <kiko::vec2> points{ {-10,5},{10,5},{0,-5},{-10,5} };
+	kiko::Modle modle {points};
+	
+	kiko::vec2 v{ 5,5 };
+	v.Normalize();
+
+	vector<Star>stars;
+	for (int i = 0; i < 1000;i++) {
+		kiko::Vector2 pos(kiko::Vector2(kiko::random(ren::g_ren.GetWidth()), kiko::random(ren::g_ren.GetHeight())));
+		kiko::Vector2 vel(kiko::randomf(1, 4), 0.0f);
+		
+		stars.push_back(Star(pos, vel));
+
+	}
+
+	kiko::Transform tran{ {400,300}, 0, 3 };
+
+	kiko::vec2 postion{ 400,300 };
+	float speed = 100;
+	constexpr float turnRate = kiko::degreesToRadians(180);
+
+	//Player player{ { { 400,300 } , 0 ,6}, modle };
+	//Enemy enemy{ 300, kiko::pi {{400,300} kiko::randomf{kiko::TwoPi}} };
+
+	//main game loop
+
+	bool quit = false;
+	while (!quit) {
+		kiko::g_time.Tick();
+		kiko::g_inputSystem.Update();
+		a.Update();
+
+		if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_ESCAPE)) {
+
+			quit = true;
+		}
+		//Player player{ 150, kiko::degreesToRadians(270.0f), { {400, 300}, 0, 3}, {"ship.txt"} };
+		//player.Update(kiko::g_time);
+		std::vector<Enemy> emenys;
+		if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE))
+		{
+			a.PlayOneShot("hit");
+			cout << "reee";
+		}
+		
+		
+
+		//dritcitons organilly
+		
+		//tran.position.x = kiko::Wrap(tran.position.x, ren.GetWidth());
+		//tran.position.y = kiko::Wrap(tran.position.y, ren.GetHeight());
+
+		//kiko::vec2 direction;
+		//if (inputSystem.GetKeyDown(SDL_SCANCODE_W)) direction.y = -1;
+		//if (inputSystem.GetKeyDown(SDL_SCANCODE_D))direction.x = 1;
+		//if (inputSystem.GetKeyDown(SDL_SCANCODE_A)) direction.x = -1;
+		//if (inputSystem.GetKeyDown(SDL_SCANCODE_S)) direction.y = 1;
+		//postion += direction *speed;
+		
+
+		ren::g_ren.SetColor(0, 0, 0, 0);
+		ren::g_ren.BeginFrane();
+
+		ren::g_ren.SetColor(255, 255, 255, 255);
+		//draw
+		for (auto& star : stars) {
+				star.Update(ren::g_ren.GetWidth(), ren::g_ren.GetHeight());
+				//ren.SetColor(kiko::random(256), kiko::random(256), kiko::random(256), 255);
+				star.Draw(ren::g_ren);
+			}
+		/*player.Draw(ren::g_ren);
+
+		enemy.Draw(ren::g_ren);*/
+
+		modle.Draw(ren::g_ren, tran.position, tran.rotations, tran.scale);
+		
+
+		ren::g_ren.EndFrame();
+	}
+
+
+
+
+	//dont worry about this now
 
 	/*while (true) {
 		ren.SetColor(0, 0, 0, 0);
 		ren.BeginFrane();
 		ren.SetColor(kiko::random(256), kiko::random(256), kiko::random(256), kiko::random(256));
 		modle.Draw(ren, kiko::Vector2{ 200,200 }, 3.0f);
-	}*/
 
+
+		
+	
+	}*/
+	
 
 	
 

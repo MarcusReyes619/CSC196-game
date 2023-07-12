@@ -1,5 +1,8 @@
 #include "InputSystem.h"
 
+
+kiko::InputSystem kiko::g_inputSystem;
+
 bool kiko::InputSystem::Initialize()
 {
 

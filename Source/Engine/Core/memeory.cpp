@@ -6,7 +6,7 @@ kiko::MemoryTracker kiko::g_memoryTracker;
 
 
 void* operator new (size_t size) {
-	cout << "allocated: " << size << endl;
+	//cout << "allocated: " << size << endl;
 
 	void* p = malloc(size);
 
@@ -15,7 +15,7 @@ void* operator new (size_t size) {
 	return p;
 }
 void operator delete(void* address, size_t size) {
-	cout << "deallacoted: " << size << endl;
+	//cout << "deallacoted: " << size << endl;
 	kiko::g_memoryTracker.remove(address,size);
 
 

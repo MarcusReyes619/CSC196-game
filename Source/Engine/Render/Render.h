@@ -32,5 +32,5 @@ namespace ren
 		SDL_Window* m_window = nullptr;
 	};
 
-
+	extern Renderer g_ren;
 }

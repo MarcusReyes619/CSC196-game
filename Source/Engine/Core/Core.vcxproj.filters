@@ -10,18 +10,40 @@
     <ClCompile Include="..\..\Game\Game\random.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="fileIO.cpp" />
     <ClCompile Include="memeory.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\Downloads\Time.cpp">
+    <ClCompile Include="fileIO.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="random.h" />
-    <ClInclude Include="fileIO.h" />
-    <ClInclude Include="memeory.h" />
-    <ClInclude Include="..\..\..\..\..\..\Downloads\Time.h" />
+    <ClInclude Include="Core.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="fileIO.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtil.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="memeory.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

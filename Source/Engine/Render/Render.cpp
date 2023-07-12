@@ -3,6 +3,8 @@
 
 
 namespace ren {
+	Renderer g_ren;
+
 
 	bool Renderer::Initialize() {
 		SDL_Init(SDL_INIT_VIDEO);
