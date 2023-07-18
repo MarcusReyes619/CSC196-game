@@ -156,7 +156,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actors.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -168,6 +167,9 @@
     <ProjectReference Include="..\..\Engine\Core\Core.vcxproj">
       <Project>{fa8bb60e-033b-4536-bb25-c53619b5394a}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\Engine\FrameWork\FrameWork.vcxproj">
+      <Project>{a2d29269-211a-4781-8363-140c27fe4e90}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Engine\Input\Input.vcxproj">
       <Project>{46d14df6-23bd-488b-8a3d-032333131155}</Project>
     </ProjectReference>
@@ -176,7 +178,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actors.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>

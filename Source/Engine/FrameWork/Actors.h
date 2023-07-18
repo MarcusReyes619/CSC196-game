@@ -10,8 +10,8 @@ public:
 		m_modle{modle}
 	{}
 	virtual void Update(float dt) = 0;
-	virtual void Draw(ren::Renderer& ren);
-
+	virtual void Draw(kiko::Renderer& ren);
+	class Scene* m_scene = nullptr;
 protected:
 	kiko::Transform m_transform;
 	kiko::Modle m_modle;

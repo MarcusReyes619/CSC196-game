@@ -1,7 +1,7 @@
 #include "Actors.h"
 
 
-void Actor::Draw(ren::Renderer& ren)
+void Actor::Draw(kiko::Renderer& ren)
 {
 	m_modle.Draw(ren,m_transform);
 }

@@ -15,8 +15,8 @@ namespace kiko {
 		//Model(std::vector<vec2> points) { m_points = points; };
 		bool Load(const std::string& filename);
 
-		void Draw(ren::Renderer& renderer, const vec2& position,float rotation, float scale);
-		void Draw(ren::Renderer& renderer, const kiko::Transform& trans);
+		void Draw(kiko::Renderer& renderer, const vec2& position,float rotation, float scale);
+		void Draw(kiko::Renderer& renderer, const kiko::Transform& trans);
 
 	private:
 

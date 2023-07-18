@@ -2,7 +2,7 @@
 #include <string>
 #include <../ThirdParty/SDL2-2.28.1/include/SDL.h>
 
-namespace ren
+namespace kiko
 {
 	class Renderer {
 		

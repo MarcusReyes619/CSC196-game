@@ -14,5 +14,7 @@ namespace kiko {
 			position{ position },
 			rotations{ rot },
 			scale{ scale }{}
+		Transform() = default;
+
 	};
 }

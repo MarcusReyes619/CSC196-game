@@ -2,7 +2,7 @@
 
 
 
-namespace ren {
+namespace kiko {
 	Renderer g_ren;
 
 

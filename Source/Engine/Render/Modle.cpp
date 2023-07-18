@@ -3,7 +3,9 @@
 
 namespace kiko {
 
-	void Modle::Draw(ren::Renderer& renderer, const vec2& position,float rotation, float scale) {
+	void Modle::Draw(kiko::Renderer& renderer, const vec2& position,float rotation, float scale) {
+
+		if (m_points.empty()) return;
 
 		for (int i = 0; i < m_points.size() - 1; i++) {
 			vec2 p1 = (m_points[i] * scale).Rotate(rotation) + position;
@@ -36,7 +38,7 @@ namespace kiko {
 		return true;
 
 	}
-	void Modle::Draw(ren::Renderer& renderer, const Transform& transform) {
+	void Modle::Draw(kiko::Renderer& renderer, const Transform& transform) {
 
 		Draw(renderer, transform.position, transform.rotations, transform.scale);
 
