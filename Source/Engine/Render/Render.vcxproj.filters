@@ -13,11 +13,23 @@
     <ClCompile Include="Modle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="modelManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render.h" />
     <ClInclude Include="Modle.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="modelManager.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="Text.h" />
   </ItemGroup>
 </Project>

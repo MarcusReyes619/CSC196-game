@@ -2,6 +2,7 @@
 #include "./Vector2.h"
 
 #include "MathUtil.h"
+#include "Color.h"
 #include "Transform.h"
 #include "../../Engine/Core//random.h"
 #include "../../Engine/Core//FileIO.h"

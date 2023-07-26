@@ -1,6 +1,7 @@
 #include "AudioSystem.h"
 namespace kiko
 {
+	AudioSystem g_audioSystem;
 	bool AudioSystem::Initialize()
 	{
 		FMOD::System_Create(&m_fmodSystem);
@@ -40,4 +41,9 @@ namespace kiko
 			m_fmodSystem->playSound(sound, 0, false, &channel);
 		}
 	}
+	/*void AudioSystem::PlayOneShot(const std::string& name, bool loop)
+	{
+		auto iter = m_sounds.find(name);
+		if
+	}*/
 }

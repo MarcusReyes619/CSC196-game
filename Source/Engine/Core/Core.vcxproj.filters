@@ -45,5 +45,6 @@
     <ClInclude Include="Time.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Color.h" />
   </ItemGroup>
 </Project>

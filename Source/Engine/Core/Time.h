@@ -28,13 +28,18 @@ namespace kiko
 		float GetElapsedSeconds();
 
 		float GetTime() const { return m_time; }
-		float GetDeltaTime() const { return m_deltaTime; }
+		float GetDeltaTime() const { return m_deltaTime * m_time_scale; }
+		float getUnscaledDeltaTime()const { return m_deltaTime; }
+		
+		float getTimeScale()const { return m_time_scale; }
+		void setTimeScale(float time){ m_time_scale = time; }
 
 	private:
 		clock::time_point m_startTime;
 		clock::time_point m_frameTime;
 
 		float m_time;
+		float m_time_scale = 1;
 		float m_deltaTime;
 };
 

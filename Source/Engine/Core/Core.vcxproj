@@ -192,6 +192,7 @@
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="fileIO.h" />
     <ClInclude Include="MathUtil.h" />

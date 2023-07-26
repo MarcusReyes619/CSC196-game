@@ -3,11 +3,16 @@
 #include "../Engine/Core/Core.h"
 #include "../Engine/Input/InputSystem.h"
 #include "Render/Modle.h"
+#include "Render/modelManager.h"
 #include <thread>
 #include "FrameWork/Scene.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "SpaceGame.h"
 #include "Audio/AudioSystem.h"
+#include "../Engine/Render/Font.h"
+#include "../Engine/Render/Text.h"
+
 
 
 using namespace std;
@@ -37,25 +42,35 @@ public:
 
 int main(int argc, char* argv[]) {
 
-	kiko::AudioSystem a;
-
-	a.Initialize();
-
-
+	{
+		//a ptr that can auto delete its self and you know how c++ gets
+		//it can be shared as
+		std::unique_ptr<int>up = std::make_unique<int>(10);
+	}
+	kiko::MemoryTracker::Initialize();
 	kiko::seedRandom((unsigned int)time(nullptr));
-	a.AddAudio("hit", "C:\\Users\\mreyes\\source\\repos\\CSC196-game\\Build\\assest\\Laser_Shoot6.wav");
+	kiko::setFilePath("assets");
+
+	
 
 	kiko::g_ren.Initialize();
 	kiko::g_ren.CreateWindow("YES SIR", 800, 600);
 
 	kiko::g_inputSystem.Initialize();
+	
+	kiko::g_manger.Get("ship.txt");
+	kiko::AudioSystem a;
+
+	a.Initialize();
+	a.AddAudio("hit", "Laser_Shoot6.wav");
+
+	unique_ptr<SpaceGame>game = make_unique<SpaceGame>();
+	game->Initialize();
 
 
-	std::vector <kiko::vec2> points{ {-10,5},{10,5},{0,-5},{-10,5} };
-	kiko::Modle modle{ points };
+	
 
-	kiko::vec2 v{ 5,5 };
-	v.Normalize();
+	
 
 	vector<Star>stars;
 	for (int i = 0; i < 1000;i++) {
@@ -65,22 +80,11 @@ int main(int argc, char* argv[]) {
 		stars.push_back(Star(pos, vel));
 
 	}
-
-	kiko::Scene scene;
-
-	scene.addActor(new Player{ {{400,300}, 0,6} , modle, 200,kiko::pi });
-
 	
-	for (int i = 0; i < 100; i++) {
-		Enemy* enemy = new Enemy{ {{kiko::random(800),kiko::random(600)}, kiko::randomf(kiko::twoPi), 3}, modle, 300,kiko::pi };
-
-		scene.addActor(enemy);
-	}
 
 	
 
-	//Player player{ { { 400,300 } , 0 ,6}, modle };
-	//Enemy enemy{ 300, kiko::pi {{400,300} kiko::randomf{kiko::TwoPi}} };
+	//Player player
 
 	//main game loop
 
@@ -94,50 +98,27 @@ int main(int argc, char* argv[]) {
 
 			quit = true;
 		}
-		//Player player{ 150, kiko::degreesToRadians(270.0f), { {400, 300}, 0, 3}, {"ship.txt"} };
-		//player.Update(kiko::g_time);
-		std::vector<Enemy> emenys;
-		if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE))
-		{
-			a.PlayOneShot("hit");
-			cout << "reee";
-		}
 		
 		
+		game->Update(kiko::g_time.GetDeltaTime());
 
-		//dritcitons organilly
-		
-		//tran.position.x = kiko::Wrap(tran.position.x, ren.GetWidth());
-		//tran.position.y = kiko::Wrap(tran.position.y, ren.GetHeight());
+		//scene.Update(kiko::g_time.GetDeltaTime());
 
-		//kiko::vec2 direction;
-		//if (inputSystem.GetKeyDown(SDL_SCANCODE_W)) direction.y = -1;
-		//if (inputSystem.GetKeyDown(SDL_SCANCODE_D))direction.x = 1;
-		//if (inputSystem.GetKeyDown(SDL_SCANCODE_A)) direction.x = -1;
-		//if (inputSystem.GetKeyDown(SDL_SCANCODE_S)) direction.y = 1;
-		//postion += direction *speed;
 		
-
-		kiko::g_ren.SetColor(0, 0, 0, 0);
+		
+		kiko::g_ren.SetColor(1, 1, 1, 1);
 		kiko::g_ren.BeginFrane();
 
-		kiko::g_ren.SetColor(255, 255, 255, 255);
 		//draw
-		for (auto& star : stars) {
-				star.Update(kiko::g_ren.GetWidth(), kiko::g_ren.GetHeight());
-				//ren.SetColor(kiko::random(256), kiko::random(256), kiko::random(256), 255);
-				star.Draw(kiko::g_ren);
-			}
-		/*player.Draw(ren::g_ren);
-
-		enemy.Draw(ren::g_ren);*/
-
-		modle.Draw(kiko::g_ren, tran.position , tran.rotations, tran.scale); 
 		
-
+		//text->Draw(kiko::g_ren, 400, 300);
+		game->Draw(kiko::g_ren);
 		kiko::g_ren.EndFrame();
 	}
 
+	kiko::MemoryTracker::DisplayInfo();
+
+	//scene.removeAll();
 
 
 
@@ -311,6 +292,8 @@ int main(int argc, char* argv[]) {
 	for (int i = 0; i < 20; i++) {
 		cout << kiko::random(10,20) << endl;
 	}*/
+	kiko::MemoryTracker::DisplayInfo();
+
 
 	return 0;
 }

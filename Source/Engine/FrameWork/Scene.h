@@ -10,18 +10,32 @@ namespace kiko {
 	public:
 		Scene() = default;
 		
-		void upDate(float dt);
+		void Update(float dt);
 		void Draw(kiko::Renderer& ren);
 
-		void addActor(Actor* actor);
-		void removeActor(Actor* actor);
+		void addActor(std::unique_ptr<Actor> actor);
+		
 		void removeAll();
+
+		template <typename t>
+		t* getActor();
+
 		friend class Actor;
 
 	private:
-		std::list <Actor*> m_actors;
-
+		std::list <std::unique_ptr<Actor>> m_actors;	
 
 	};
+
+	template <typename t>
+	inline t* Scene::getActor() {
+		for (auto& actor : m_actors) {
+			t* result = dynamic_cast <t*>(actor.get());
+
+			if (result) return result;
+		}
+
+		return nullptr;
+	}
 
 }
